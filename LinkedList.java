@@ -1,7 +1,7 @@
-public class LinkedList{
+class LinkedList{
     //Head of the List
     Node head;
-     class Node{
+     static class Node{
         int data;
         Node next;
         Node(int d){
@@ -40,6 +40,63 @@ public class LinkedList{
         }
         last.next = new_node;
         return;
+    }
+
+    Node linkedReversed(Node node){
+         Node prev = null;
+         Node next = null;
+         Node curr = head;
+         while(curr != null){
+            next = curr.next;
+            curr.next = prev;
+
+            prev = curr;
+            curr = next;
+         }
+         head = prev ;
+         return node;
+    }
+
+    void deleteNode(int key){
+         Node temp = head ,prev=null;
+         //Case 1 : Head Deletion
+        if(temp!=null && temp.data==key){
+            head = temp.next;
+        }
+        //Case 2 : Something else
+        while(temp!=null && temp.data!=key){
+            prev = temp;
+            temp=temp.next;
+        }
+
+        //Case 3  :
+        if(temp==null) return;
+
+         prev.next=temp.next;
+    }
+    void deleteEntireList(){
+         head = null ;
+    }
+
+    public int getNodeCount(Node node){
+        if(node == null){
+            return 0;
+        }
+        return 1 + getNodeCount(node.next);
+    }
+
+    public int getCount(){
+         return getNodeCount(head);
+    }
+
+    public int countLoop(){
+         int count = 0;
+         Node temp = head;
+         while(temp!=null){
+             count ++;
+             temp = temp.next;
+         }
+         return count;
     }
 
     public void printList(){
