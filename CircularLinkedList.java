@@ -60,7 +60,16 @@ public class CircularLinkedList {
     return head;
  }
 
- static int countNumber(Node head){
+ static Node toCircularList(Node head){
+        Node start = head;
+        while(head.next!=null){
+            head=head.next;
+        }
+        head.next=start;
+        return start;
+    }
+    
+    static int countNumber(Node head){
     Node temp = head;
     int count = 0;
 
