@@ -30,8 +30,7 @@ public class Stack_arraylist {
         }
     }
     public static void main(String[] args) {
-        Stack_arraylist outer = new Stack_arraylist();
-        Stack s = outer.new Stack();
+         Stack s = new Stack();
         s.push(1);
         s.push(2);
         s.push(3);
